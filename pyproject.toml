@@ -1,0 +1,57 @@
+requires-python = ">=3.12"
+[dependency-groups]
+dev = [
+    "mypy>=1.18.2",
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "pytest-mock>=3.15.1",
+    "questionary>=2.1.1",
+    "ruff>=0.14.2",
+    "typer>=0.20.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = 'py312'
+exclude = [
+    "leetcode*.py",
+    "hackerrank*.py",
+    "test?/",
+    "**/test_*.py",
+    "**/*_test.py"
+]
+
+[tool.ruff.lint]
+fixable = ['ALL']
+select = ['E', 'F', 'I', 'B', 'Q']
+ignore = ['E101', "B008"]
+
+[tool.ruff.format]
+quote-style = "single"
+docstring-code-format = true
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+multiline-quotes = "double"
+
+[tool.mypy]
+python_version = '3.12'
+disallow_untyped_defs = true
+ignore_missing_imports = true
+disable_error_code = ["operator", "arg-type"]
+
+strict_optional = true
+exclude = ['^test?/',
+        'leetcode*.py',
+        'hackerrank*.py',
+        'cli.py',
+        'casino_simulation.py']
+
+[tool.coverage.run]
+omit = [
+    "*/test/*",
+    "*/test_*.py",
+    "*/__init__.py",
+    "src/main.py",
+    "src/parser.py",
+]
