@@ -96,8 +96,8 @@ def setup_casino() -> None:
 
         casino.add_goose(goose)
         typer.secho(
-            f"\nГусь с именем '{name}' создан\nТип: {goose.__class__.__name__}\n \
-                Громкость: {honk_volume}\n",
+            f"\nГусь с именем '{name}' создан\nТип: {goose.__class__.__name__}\n"
+            f"Громкость: {honk_volume}\n",
             fg=typer.colors.BRIGHT_BLUE,
         )
         typer.echo()
@@ -148,8 +148,8 @@ def show_status() -> None:
     for i, goose in enumerate(casino.iter_goose(), 1):
         goose_type = 'WarGoose' if isinstance(goose, WarGoose) else 'HonkGoose'
         typer.echo(
-            f'{i}. {goose_type} {goose.name}\nБаланс: {goose.balance}\n \
-                Громкость: {goose.honk_volume}\n'
+            f'{i}. {goose_type} {goose.name}\nБаланс: {goose.balance}\n'
+            f'Громкость: {goose.honk_volume}\n'
         )
     typer.echo()
 
@@ -311,8 +311,8 @@ def recreate_goose() -> None:
     goose_choices = []
     for goose in casino.iter_goose():
         goose_choices.append(
-            f'{goose.name} (Тип: {type(goose).__name__}; Баланс: {goose.balance}; \
-                Сила гоготания: {goose.honk_volume})'
+            f'{goose.name} (Тип: {type(goose).__name__}; Баланс: {goose.balance}; '
+            f'Сила гоготания: {goose.honk_volume})'
         )
 
     selected_old = questionary.select(
